@@ -19,6 +19,7 @@ from Diff3D.utils import cosine_similarity
 from human_body_prior.body_model.body_model import BodyModel
 from visualisation import render, save_video, get_correspondence_colors
 from SMALify.smal_model.smal_torch import SMAL, batch_rodrigues
+from types import SimpleNamespace
 
 sys.path.append(os.path.join(os.path.dirname(__file__), 'Diff3D'))
 from Diff3D.pyFM.mesh import TriMesh
@@ -709,3 +710,49 @@ def train_skinning_weights_network(data, weights, encoder, epochs=100, ours=True
         scheduler.step()
     data.fps_p = fps
     return model, loss
+
+def get_dummy_args():
+    return SimpleNamespace(**{
+        "feature_dim": 2048,
+        "device": "cuda",
+        "exp_path": "experiments",
+        "exp_name": "",
+        "FN_path": "",
+        "num_layers": 3,
+        "smpl_data_path": "/home/lukas/projects/ISC/data/SMPL_shape_dataset",
+        "amass_path": "/home/lukas/data/AMASS/amass_30fps_train.pt",
+        "smplh_path": "/home/lukas/projects/TextDeformer/smplh/neutral/model.npz",
+        "deforming_things_path": "/home/lukas/projects/ISC/data/DeformingThings4DFeatures",
+        "smal_ours_data_path": "/home/lukas/projects/ISC/data/SMAL_ours_shape_dataset",
+        "shrec19_data_path": "/home/lukas/projects/ISC/data/SHREC19_shape_dataset",
+        "shrec20_data_path": "/home/lukas/projects/ISC/data/SHREC20_shape_dataset",
+        "tosca_data_path": "/home/lukas/projects/ISC/data/TOSCA_shape_dataset",
+        "shapnet_chair_data_path": "/home/lukas/projects/ISC/data/shapenet_chair",
+        "shapnet_chair_val_data_path": "/home/lukas/projects/ISC/data/shapenet_chair_val",
+        "shapnet_airplane_data_path": "/home/lukas/projects/ISC/data/shapenet_airplane",
+        "shapnet_airplane_val_data_path": "/home/lukas/projects/ISC/data/shapenet_airplane_val",
+        "shapnet_table_data_path": "/home/lukas/projects/ISC/data/shapenet_table",
+        "smal_data_path": "/home/lukas/projects/ISC/data/SMAL_shape_dataset",
+        "surreal_data_path": "/home/lukas/projects/ISC/data/surreal_shape_dataset",
+        "shapenet_data_path": "/home/lukas/projects/ISC/data/shapenet",
+        "polyhaven_chair_data_path": "./data/polyhaven_chairs",
+        "polyhaven_animals_data_path": "./data/polyhaven_animals",
+        "source_folder_dt4d": "PATH/TO/DeformingThings4D/animals", # Needed for the animations only
+        "mask": None,
+        "train_data": [
+            ""
+        ],
+        "val_pairs": [
+        ],
+        "tensorboard_path": "",
+        "train_on_validation": True,
+        "seed": 0,
+        "feature_noise_p": 0.0,
+        "fps_p": 100,
+        "FN_lr": 0.0001,
+        "w_contrastive": 1,
+        "w_reconstruction": 1,
+        "FN_iters": 5000,
+        "FN_render_iter": 500,
+        "FN_train": True
+    })

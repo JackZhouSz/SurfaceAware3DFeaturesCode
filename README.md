@@ -48,6 +48,13 @@ else:
     from diffusers.models.embeddings import PositionNet
 ```
 
+### Extracting Features
+If you want to extract the features for a folder with meshes with our pre-trained networks run:
+```bash
+python scripts/process_features.py --source <source_path> --prompt <prompt>
+```
+This will extract the raw features as well as the features with our pre-trained models automatically.
+
 ### Data
 
 The `scripts` folder contains all data generation scripts. To replicate the training, you will need to download the Surreal and SMAL data set, adapt the paths in `scripts/paths` and then run `generate_surreal5k_dataset.py` and `generate_smal_dataset.py`. Similarly, you will need to obtain the data for SHREC'19, SHREC'20, TOSCA, ShapeNet datasets for evaluation. To obtain the data, check the paper references. You will also need to obtain the SMPLH model for some of the applications.
