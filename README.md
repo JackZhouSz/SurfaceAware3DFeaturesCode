@@ -25,9 +25,9 @@ CUDA=cu126 # Check your CUDA version
 uv venv -p 3.10 .saf3d
 source .saf3d/bin/activate
 uv pip install torch torchvision --index-url https://download.pytorch.org/whl/$CUDA
-uv pip install setuptools pybind11
-uv pip install -r requirements_uv.txt --no-build-isolation
-uv pip install "git+https://github.com/facebookresearch/pytorch3d.git@stable" --no-build-isolation
+uv pip install --no-build-isolation setuptools pybind11 pip
+uv pip install --no-build-isolation -r requirements_uv.txt
+uv pip install --no-build-isolation"git+https://github.com/facebookresearch/pytorch3d.git@stable" 
 ```
 
 **Setup with Conda**:
